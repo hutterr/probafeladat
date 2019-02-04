@@ -12,5 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('greetings');
 });
+
+
+Route::get('/add', function () {
+    return view('addProjekt');
+});
+
+Route::get('/show/{id}', function () {
+    return view('show');
+});
+
+Route::resource('projekt', 'ProjektController');
