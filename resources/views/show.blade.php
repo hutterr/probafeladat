@@ -18,6 +18,13 @@
         <table>
         <a href='/projekt' class="btn btn-primary">Vissza</a>
         <a href='/projekt/{{$projekt->id}}/edit' class="btn btn-primary ml-2">Szerkesztés</a>
+        {!!Form::open(['action' => ['ProjektController@destroy', $projekt->id],'method' => 'POST', 'class' => 'pull-right'])!!}
+            {{Form::hidden('_method', 'DELETE')}}
+            {{Form::submit('Törlés', ['class' => 'btn btn-danger ml-2'])}}
+        {!!Form::close()!!}
+        {!!Form::open(['action' => ['ProjektController@kapcsDestroy', $projekt->id],'method' => 'POST'])!!}            
+            {{Form::submit('Kapcsolattartó törlése', ['class' => 'btn btn-danger ml-2'])}}
+        {!!Form::close()!!}
         </div>
       </div>
 @endsection

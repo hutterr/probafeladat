@@ -25,3 +25,4 @@ Route::get('/show/{id}', function () {
 });
 
 Route::resource('projekt', 'ProjektController');
+Route::post('projekt/kapcsDestroy/{id}', 'ProjektController@kapcsDestroy');

@@ -102,7 +102,7 @@ class ProjektController extends Controller
         $projekt->kapcsMail = $request->input('kapcsMail');
         $projekt->save();
 
-        return redirect('/projekt')->with('succes', 'Sikeres modósítás');
+        return redirect('/projekt')->with('succes', 'Sikeres modósítás!');
     }
 
     /**
@@ -113,6 +113,16 @@ class ProjektController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $projekt = Projekt::find($id);
+        $projekt->delete();
+        return redirect('/projekt')->with('succes', 'Sikeres törlés!');
+    }
+    public function kapcsDestroy($id)
+    {
+        $projekt = Projekt::find($id);
+        $projekt->kapcsolattarto = '';
+        $projekt->kapcsMail = '';
+        $projekt->save();
+        return redirect('/projekt/'.$projekt->id)->with('succes', 'Kapcsolattartó törölve!');
     }
 }
