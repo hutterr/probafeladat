@@ -16,8 +16,8 @@
                 <td> {{$projekt->kapcsMail}}</td>
             </tr>
         <table>
-
-      
+        <a href='/projekt' class="btn btn-primary">Vissza</a>
+        <a href='/projekt/{{$projekt->id}}/edit' class="btn btn-primary ml-2">Szerkesztés</a>
         </div>
       </div>
 @endsection

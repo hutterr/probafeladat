@@ -75,7 +75,8 @@ class ProjektController extends Controller
      */
     public function edit($id)
     {
-        //
+        $projekt = Projekt::find($id);
+        return view('edit')->with('projekt',$projekt);
     }
 
     /**
@@ -87,7 +88,21 @@ class ProjektController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'nev' => 'required',
+            'leiras' => 'required',
+            'statusz' => 'required',
+        ]);
+
+        $projekt = Projekt::find($id);
+        $projekt->nev = $request->input('nev');
+        $projekt->leiras = $request->input('leiras');
+        $projekt->statusz = $request->input('statusz');
+        $projekt->kapcsolattarto = $request->input('kapcsolattarto');
+        $projekt->kapcsMail = $request->input('kapcsMail');
+        $projekt->save();
+
+        return redirect('/projekt')->with('succes', 'Sikeres modósítás');
     }
 
     /**
